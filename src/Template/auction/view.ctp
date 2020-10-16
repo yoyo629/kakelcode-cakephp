@@ -1,4 +1,11 @@
   <h2>「<?= $biditem->name ?>」の情報</h2>
+  <!-- カウントダウンタイマーに入札終了時間を渡す -->
+  <?php $end_time = $biditem->endtime; ?>
+
+  <script type="text/javascript">
+      var end = '<?php echo $end_time; ?>';
+  </script>
+  <!-- ここまで -->
   <table class="vertical-table">
       <tr>
           <th class="small" scope="row">出品者</th>
