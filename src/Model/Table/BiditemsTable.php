@@ -74,6 +74,12 @@ class BiditemsTable extends Table
             ->notEmptyString('name');
 
         $validator
+            ->scalar('item_detail')
+            ->maxLength('item_detail', 1000)
+            ->requirePresence('item_detail', 'create')
+            ->notempty('item_detail');
+
+        $validator
             ->boolean('finished')
             ->requirePresence('finished', 'create')
             ->notEmptyString('finished');
