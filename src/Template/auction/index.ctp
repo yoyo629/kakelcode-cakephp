@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th class="main" scope="col"><?= $this->Paginator->sort('name') ?></th>
+            <th class="col"><?= $this->Paginator->sort('item_detail') ?></th>
             <th scope="col"><?= $this->Paginator->sort('finished') ?></th>
             <th scope="col"><?= $this->Paginator->sort('endtime') ?></th>
             <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -13,6 +14,7 @@
         <?php foreach ($auction as $biditem) : ?>
             <tr>
                 <td><?= h($biditem->name) ?></td>
+                <td><?= h($biditem->item_detail) ?></td>
                 <td><?= h($biditem->finished ? 'Finished' : '') ?></td>
                 <td><?= h($biditem->endtime) ?></td>
                 <td class="actions">
