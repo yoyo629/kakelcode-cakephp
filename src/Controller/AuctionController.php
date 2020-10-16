@@ -128,8 +128,8 @@ class AuctionController extends AuctionBaseController
             //失敗時のメッセージ
             $this->Flash->error(__('入札に失敗しました。もういちど入力してください'));
         }
-        //$biditem/idの$biditemを取得する
-        $biditem = $this->Biditem->get($biditem_id);
+        //$biditem_idの$biditemを取得する
+        $biditem = $this->Biditems->get($biditem_id);
         $this->set(compact('bidrequest', 'biditem'));
     }
 
