@@ -104,7 +104,7 @@ class BiditemsTable extends Table
     public function file_check($value, $context)
     {
         //boolで返さないとエラー
-        return (bool) preg_match('/\.gif$|\.png$|\.jpg$|\.jpeg$/', $value);
+        return (bool) preg_match('/\.png$|\.jpg$|\.jpeg$/', $value);
     }
 
     /**
