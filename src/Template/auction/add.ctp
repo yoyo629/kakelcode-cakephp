@@ -1,5 +1,6 @@
 <h2>商品を出品する</h2>
-<?= $this->Form->create($biditem) ?>
+<!-- fileフォームの送信方法をPOSTに設定 -->
+<?= $this->Form->create($biditem, ['type' => 'file']) ?>
 <fieldset>
     <legend>※商品名と終了日時を入力:</legend>
     <?php
@@ -12,6 +13,8 @@
         "rows" => 5,
         "label" => "item_detail"
     ]);
+    echo '出品画像登録';
+    echo $this->Form->file('item_image');
     echo $this->Form->hidden('finished', ['value' => 0]);
     echo $this->Form->control('endtime');
     ?>
