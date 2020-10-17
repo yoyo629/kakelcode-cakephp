@@ -14,7 +14,11 @@
         "label" => "item_detail"
     ]);
     echo '出品画像登録';
-    echo $this->Form->input('item_image');
+    echo $this->Form->input('item_image', [
+        "type" => "file",
+        "label" => "item_image"
+    ]);
+
     echo $this->Form->hidden('finished', ['value' => 0]);
     echo $this->Form->control('endtime');
     ?>
