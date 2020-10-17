@@ -39,3 +39,5 @@ nbproject/*
 .vscode
 # Sass preprocessor
 .sass-cache/
+# item_img以下のファイルを管理外にする
+item_img/
