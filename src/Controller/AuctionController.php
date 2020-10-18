@@ -95,21 +95,29 @@ class AuctionController extends AuctionBaseController
         if ($this->request->is('post')) {
             //商品画像を受け取る
             $file = $this->request->getData('item_image');
-            //画像ファイル名に時間を結合
-            $filePath = '../webroot/item_img/' . date('YmdHis') . $file['name'];
-            //webroot/item_imgに移動
-            move_uploaded_file($file['tmp_name'], $filePath);
-            //データベースに保存するための配列
-            $data = array(
-                'user_id' => $this->request->getData('user_id'),
-                'name' => $this->request->getData('name'),
-                'item_detail' => $this->request->getData('item_detail'),
-                'item_image' => date('YmdHis') . $file['name'],
-                'finished' => $this->request->getData('finished'),
-                'endtime' => $this->request->getData('endtime'),
-            );
-            //$biditemにフォームの送信内容を反映
-            $biditem = $this->Biditems->patchEntity($biditem, $data);
+            //画像ファイルの拡張子が不正なものか判定する処理
+            if (preg_match('/\.png$|\.jpg$|\.jpeg$/', $file['name'])) {
+                //画像ファイル名に時間を結合
+                $filePath = '../webroot/item_img/' . date('YmdHis') . $file['name'];
+                //webroot/item_imgに移動
+                move_uploaded_file($file['tmp_name'], $filePath);
+                //データベースに保存するための配列
+                $data = array(
+                    'user_id' => $this->request->getData('user_id'),
+                    'name' => $this->request->getData('name'),
+                    'item_detail' => $this->request->getData('item_detail'),
+                    'item_image' => date('YmdHis') . $file['name'],
+                    'finished' => $this->request->getData('finished'),
+                    'endtime' => $this->request->getData('endtime'),
+                );
+                //$biditemにフォームの送信内容を反映
+                $biditem = $this->Biditems->patchEntity($biditem, $data);
+            } else {
+                //失敗時のメッセージ
+                $this->Flash->error(__('ファイルの拡張子が不正なためアップロード出来ません。'));
+                //出品画面に移動(add)
+                return $this->redirect(['action' => 'add']);
+            }
             //$biditemを保存する
             if ($this->Biditems->save($biditem, $data)) {
                 //成功時のメッセージ
