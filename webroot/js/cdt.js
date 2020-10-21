@@ -24,6 +24,7 @@ function dateCounter() {
             if ((h == 0) && (m == 0) && (s == 0)) {
                 clearInterval(timer);
                 document.getElementById("countDown").innerHTML = "入札終了しました！";
+                alert('入札時間が終了しました！') ? '' : location.reload(); // 入札終了時間とともにアラートを表示してページをリロード
             }
         } else {
             document.getElementById("countDown").innerHTML = "入札終了しました！";
