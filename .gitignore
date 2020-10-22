@@ -39,5 +39,7 @@ nbproject/*
 .vscode
 # Sass preprocessor
 .sass-cache/
-# item_img以下のファイルを管理外にする
-item_img/
+
+# item_img以下の.gitkeepファイル以外を管理対象外とする
+/webroot/item_img/*
+!/webroot/item_img/.gitkeep
