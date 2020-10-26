@@ -74,6 +74,20 @@ class BiditemsTable extends Table
             ->notEmptyString('name');
 
         $validator
+            ->scalar('item_detail')
+            ->maxLength('item_detail', 1000)
+            ->requirePresence('item_detail', 'create')
+            ->notempty('item_detail');
+
+        $validator
+            ->requirePresence('item_image', 'create')
+            ->notEmpty('item_image', '画像をアップロードしてください')
+            ->add('item_image', 'custom', [
+                'rule' => [$this, 'file_check'],
+                'message' => '不正な拡張子です。ファイルを確認してください'
+            ]);
+
+        $validator
             ->boolean('finished')
             ->requirePresence('finished', 'create')
             ->notEmptyString('finished');
@@ -84,6 +98,13 @@ class BiditemsTable extends Table
             ->notEmptyDateTime('endtime');
 
         return $validator;
+    }
+
+    //　アップロードファイルの拡張子チェック
+    public function file_check($value, $context)
+    {
+        //boolで返さないとエラー
+        return (bool) preg_match('/\.png$|\.jpg$|\.jpeg$/', $value);
     }
 
     /**

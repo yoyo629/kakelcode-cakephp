@@ -1,4 +1,5 @@
 <?php
+
 use Migrations\AbstractMigration;
 
 class CreateBiditems extends AbstractMigration
@@ -21,6 +22,16 @@ class CreateBiditems extends AbstractMigration
         $table->addColumn('name', 'string', [
             'default' => null,
             'limit' => 100,
+            'null' => false,
+        ]);
+        $table->addColumn('item_detail', 'string', [
+            'default' => null,
+            'limit' => 1000,
+            'null' => false,
+        ]);
+        $table->addColumn('item_image', 'string', [
+            'default' => null,
+            'limit' => 255,
             'null' => false,
         ]);
         $table->addColumn('finished', 'boolean', [
