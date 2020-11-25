@@ -43,3 +43,7 @@ nbproject/*
 # item_img以下の.gitkeepファイル以外を管理対象外とする
 /webroot/item_img/*
 !/webroot/item_img/.gitkeep
+
+/composer.json
+/composer.lock
+/tmp/debug_kit.sqlite
