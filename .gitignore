@@ -1,10 +1,10 @@
 # CakePHP specific files #
 ##########################
-/config/app.php
-/config/.env
-/logs/*
-/tmp/*
-/vendor/*
+#/config/app.php
+#/config/.env
+#/logs/*
+#/tmp/*
+#/vendor/*
 
 # OS generated files #
 ######################
@@ -41,7 +41,7 @@ nbproject/*
 .sass-cache/
 
 # item_img以下の.gitkeepファイル以外を管理対象外とする
-/webroot/item_img/*
+#/webroot/item_img/*
 !/webroot/item_img/.gitkeep
 
 /composer.json
